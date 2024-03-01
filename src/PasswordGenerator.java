@@ -1,6 +1,6 @@
 import java.security.SecureRandom;
 
-public class Main {
+public class PasswordGenerator {
     private static final String LOWER = "abcdefghijklmnopqrstuvwxyz";
     private static final String UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String DIGITS = "0123456789";
@@ -8,11 +8,17 @@ public class Main {
     private static final int PASSWORD_LENGTH = 24;
 
     public static void main(String[] args) {
+        // Generate password
         String password = generatePassword();
         System.out.println("Generated password: " + password);
+
+        // Unit tests
+        PasswordGeneratorTest test = new PasswordGeneratorTest();
+        test.testGeneratedPasswordLength();
+        test.testGeneratedPasswordNotNull();
     }
 
-    private static String generatePassword(){
+    public static String generatePassword(){
         SecureRandom random = new SecureRandom();
         StringBuilder password = new StringBuilder();
 
